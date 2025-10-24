@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_stack_a.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmorais- <tmorais-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/23 13:51:51 by tmorais-          #+#    #+#             */
+/*   Updated: 2025/10/24 16:48:03 by tmorais-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static long	ft_atol(const char *str)
@@ -44,43 +56,33 @@ static void	add_node(t_stack **stack, int number)
 	}
 }
 
-void	init_stack_a(t_stack **stack_a, char **argv)
+static void	handle_error(t_stack **stack_a, char **split_to_free)
+{
+	free_stack(stack_a);
+	if (split_to_free)
+		free_split(split_to_free);
+	write(2, "Error\n", 6);
+	exit(1);
+}
+
+void	init_stack_a(t_stack **stack_a, char **argv, char **split_to_free)
 {
 	long	num;
 	int		i;
 
+	if (!argv || !argv[0])
+		return ;
 	i = 0;
 	while (argv[i])
 	{
 		if (error_digit(argv[i]))
-			free_error(stack_a);
+			handle_error(stack_a, split_to_free);
 		num = ft_atol(argv[i]);
 		if (num > INT_MAX || num < INT_MIN)
-			free_error(stack_a);
+			handle_error(stack_a, split_to_free);
 		if (error_duplicate(*stack_a, (int)num))
-			free_error(stack_a);
+			handle_error(stack_a, split_to_free);
 		add_node(stack_a, (int)num);
 		i++;
-	}
-}
-
-void	prep_push(t_stack **stack, t_stack *node_to_top, char stack_name)
-{
-	while (*stack != node_to_top)
-	{
-		if (stack_name == 'a')
-		{
-			if (node_to_top->above_median)
-				ra(stack, true);
-			else
-				rra(stack, true);
-		}
-		else if (stack_name == 'b')
-		{
-			if (node_to_top->above_median)
-				rb(stack, true);
-			else
-				rrb(stack, true);
-		}
 	}
 }

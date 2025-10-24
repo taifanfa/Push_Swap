@@ -1,3 +1,14 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tmorais- <tmorais-@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/10/23 13:54:15 by tmorais-          #+#    #+#              #
+#    Updated: 2025/10/23 13:58:15 by tmorais-         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME        := push_swap
 CC          := cc
@@ -25,7 +36,8 @@ SRCS := main.c \
         sort_stacks_turk.c \
         sort_three_stack.c \
         stack_utils.c \
-        stack_utils_extra.c
+        stack_utils_extra.c \
+		preparation_operations.c
 
 SRC_FILES := $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJ_FILES := $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))

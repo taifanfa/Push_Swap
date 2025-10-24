@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmorais- <tmorais-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/23 13:50:04 by tmorais-          #+#    #+#             */
+/*   Updated: 2025/10/24 18:09:35 by tmorais-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -22,7 +34,7 @@ typedef struct s_stack
 void	push_swap(int argc, char **argv);
 
 /* Stack Initialization */
-void	init_stack_a(t_stack **a, char **argv);
+void	init_stack_a(t_stack **a, char **argv, char **split_to_free);
 
 /* Node Initialization */
 void	init_nodes_a(t_stack *a, t_stack *b);
@@ -55,7 +67,7 @@ t_stack	*find_maximum(t_stack *stack);
 t_stack	*get_cheapest_node(t_stack *stack);
 
 /* Preparation */
-void	prep_push(t_stack **stack, t_stack *top, char name);
+void	prep_push(t_stack **stack, t_stack *node_to_top, char stack_name);
 void	rotate_both(t_stack **a, t_stack **b, t_stack *cheapest);
 void	reverse_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest);
 void	minimum_to_top(t_stack **a);
@@ -65,6 +77,7 @@ bool	error_digit(char *str);
 bool	error_duplicate(t_stack *a, int num);
 void	free_stack(t_stack **stack);
 void	free_error(t_stack **a);
+void	free_split(char **split);
 
 /* String Utils */
 char	**ft_split(char const *s, char c);

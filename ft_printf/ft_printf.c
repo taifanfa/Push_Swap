@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmorais- <tmorais-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/23 13:54:57 by tmorais-          #+#    #+#             */
+/*   Updated: 2025/10/23 13:56:25 by tmorais-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int	ft_process_format(char c, va_list args)
@@ -23,9 +35,10 @@ static int	ft_process_format(char c, va_list args)
 
 static int	ft_is_valid(char c)
 {
-	char	*valid = "cspdiuxX%";
+	char	*valid;
 	int		i;
 
+	valid = "cspdiuxX%";
 	i = 0;
 	while (valid[i])
 	{
@@ -71,7 +84,7 @@ int	ft_printf(const char *format, ...)
 	if (!format)
 		return (-1);
 	if (format[0] == '\0')
-    	return (0);
+		return (0);
 	va_start(args, format);
 	count = ft_parse(format, args);
 	va_end(args);

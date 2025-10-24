@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmorais- <tmorais-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/23 13:50:49 by tmorais-          #+#    #+#             */
+/*   Updated: 2025/10/23 13:50:52 by tmorais-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	count_words(const char *s, char c)
@@ -10,7 +22,10 @@ static int	count_words(const char *s, char c)
 	while (*s)
 	{
 		if (*s != c && !in_word)
-			n++, in_word = 1;
+		{
+			n++;
+			in_word = 1;
+		}
 		else if (*s == c)
 			in_word = 0;
 		s++;
